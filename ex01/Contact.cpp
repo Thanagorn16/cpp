@@ -6,7 +6,7 @@
 /*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 10:05:31 by truangsi          #+#    #+#             */
-/*   Updated: 2023/08/24 11:26:02 by truangsi         ###   ########.fr       */
+/*   Updated: 2023/08/25 11:34:45 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,13 @@ void	Contact::setIndex(int index)
 	_index = index;
 }
 
+std::string	checkLongInput(std::string str)
+{
+	if (str.length() <= 10)
+		return (str);
+	return (str.substr(0, 9) + ".");
+}
+
 bool	Contact::printContact(int index)
 {
 	//if the contact does not exist
@@ -54,9 +61,9 @@ bool	Contact::printContact(int index)
 		return (false);
 	// if the contact exists
 	std::cout << '|' << std::setw(10) << index << '|'
-		<< std::setw(10) << _firstName << '|'
-		<< std::setw(10) << _lastName << '|'
-		<< std::setw(10) << _nickname << '|' << std::endl;
+		<< std::setw(10) << checkLongInput(_firstName) << '|'
+		<< std::setw(10) << checkLongInput(_lastName) << '|'
+		<< std::setw(10) << checkLongInput(_nickname) << '|' << std::endl;
 	return (true);
 }
 

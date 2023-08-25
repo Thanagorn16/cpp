@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <iomanip>
+#include <string.h>
 
 class	Contact
 {

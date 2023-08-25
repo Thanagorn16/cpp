@@ -6,7 +6,7 @@
 /*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 10:05:14 by truangsi          #+#    #+#             */
-/*   Updated: 2023/08/24 10:21:57 by truangsi         ###   ########.fr       */
+/*   Updated: 2023/08/25 11:34:38 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	PhoneBook::addContact()
 
 void	PhoneBook::display()
 {
-	std::cout << std::endl << "---------------- Contacts ----------------" << std::endl;
+	std::cout << std::endl << "---------------- Contacts --------------------" << std::endl;
 	for (int i = 0; i < 8; i++) //! if there's no more contact stop printing the index
 	{
 		_contacts[i].printContact(i);
