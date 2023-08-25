@@ -6,37 +6,11 @@
 /*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 10:05:14 by truangsi          #+#    #+#             */
-/*   Updated: 2023/08/25 11:34:38 by truangsi         ###   ########.fr       */
+/*   Updated: 2023/08/25 18:58:39 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
-
-void	PhoneBook::openBook()
-{
-	std::cout << std::endl;
-	std::cout << "Enter one of the commands [ ADD / SEARCH / EXIT ]: ";
-}
-
-void	PhoneBook::addContact()
-{
-	static int  i;
-	// if (i > 8)
-	//     exit (0); // clear the contact later
-	_contacts[i].init();
-	_contacts[i].setIndex(i); //!is there a need to set the index?
-	// printf("contact %d has index %d\n", i, _contacts[i].index);
-	i++;
-}
-
-void	PhoneBook::display()
-{
-	std::cout << std::endl << "---------------- Contacts --------------------" << std::endl;
-	for (int i = 0; i < 8; i++) //! if there's no more contact stop printing the index
-	{
-		_contacts[i].printContact(i);
-	}
-}
 
 int	main()
 {
@@ -47,7 +21,7 @@ int	main()
 	while (1)
 	{
 		phoneBook.openBook();
-		getline(std::cin, input);
+		getline(std::cin >> std::ws, input);
 		if (input.compare("ADD") == 0)
 		{
 			phoneBook.addContact();
@@ -56,6 +30,7 @@ int	main()
 		{
 			phoneBook.display();
 		}
-		// printf("out of add\n");
+		else if (input.compare("EXIT") == 0)
+			break ;
 	}
 }

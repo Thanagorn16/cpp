@@ -6,7 +6,7 @@
 /*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 10:05:31 by truangsi          #+#    #+#             */
-/*   Updated: 2023/08/25 11:34:45 by truangsi         ###   ########.fr       */
+/*   Updated: 2023/08/25 16:21:55 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,8 @@ void	Contact::init()
 	_lastName = _getInput("Enter your last name: ");
 	_nickname = _getInput("Enter your nickname: ");
 	_phoneNum = _getInput("Enter your phone number: ");
-	_darkSecret = _getInput("Enter your darkest secrete: ");
-	std::cout << "finised init\n";
-}
-
-void	Contact::setIndex(int index)
-{
-	_index = index;
+	_darkSecret = _getInput("Enter your darkest secret: ");
+	std::cout << "DONE!" << std::endl;
 }
 
 std::string	checkLongInput(std::string str)
@@ -65,6 +60,15 @@ bool	Contact::printContact(int index)
 		<< std::setw(10) << checkLongInput(_lastName) << '|'
 		<< std::setw(10) << checkLongInput(_nickname) << '|' << std::endl;
 	return (true);
+}
+
+void	Contact::showSelectedContact()
+{
+	std::cout << "First Name: " << _firstName << std::endl;
+	std::cout << "Last Name: " << _lastName << std::endl;
+	std::cout << "Nickname: " << _nickname << std::endl;
+	std::cout << "Phone Number: " << _phoneNum << std::endl;
+	std::cout << "Dark Secret: " << _darkSecret << std::endl;
 }
 
 

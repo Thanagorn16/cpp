@@ -13,17 +13,13 @@ class	Contact
 		std::string _nickname;
 		std::string _phoneNum;
 		std::string _darkSecret;
-		int	_index;
 
 		std::string	_getInput(std::string str) const;
 
 	public:
-		// int		index;
-
 		void	init();
-		void	setIndex(int i);
 		bool	printContact(int index);
-
+		void	showSelectedContact();
 };
 
 #endif
