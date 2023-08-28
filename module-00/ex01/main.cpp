@@ -6,7 +6,7 @@
 /*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 10:05:14 by truangsi          #+#    #+#             */
-/*   Updated: 2023/08/25 18:58:39 by truangsi         ###   ########.fr       */
+/*   Updated: 2023/08/28 12:00:10 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,5 @@ int	main()
 		else if (input.compare("EXIT") == 0)
 			break ;
 	}
+	return (0);
 }
