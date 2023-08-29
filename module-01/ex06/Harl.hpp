@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/29 09:51:44 by truangsi          #+#    #+#             */
-/*   Updated: 2023/08/29 17:08:44 by truangsi         ###   ########.fr       */
+/*   Created: 2023/08/29 14:35:16 by truangsi          #+#    #+#             */
+/*   Updated: 2023/08/29 16:54:55 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Sed.hpp"
+#ifndef HARL_HPP
+#define HARL_HPP
 
-int	main(int ac, char** av)
+#include <iostream>
+
+class Harl
 {
-	std::ifstream	srcFile;
-	std::ofstream	desFile;
+	private:
+		std::string	_comments[4];
 
-	if (ac != 4)
-	{
-		std::cerr << "Only requires 3 args" << std::endl;
-		return (EXIT_FAILURE);
-	}
+		void	debug(void);
+		void	info(void);
+		void	warning(void);
+		void	error(void);
+		void	(Harl::*funcPtr[4])(void);
+	public:
+		int		index;
 
-	//open files
-	if (handleFile(av, srcFile, desFile))
-		return (EXIT_FAILURE);
+		void	init();
+		void	getIndex(std::string level);
+		void	complain(std::string level);
+};
 
-	//copy and replace
-	rep(av, srcFile, desFile);
-
-	//close files
-	srcFile.close();
-	desFile.close();
-}
+#endif
