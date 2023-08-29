@@ -1,0 +1,4 @@
+In C++,
+you can open and read a file using the <fstream> library,
+which provides classes for handling file input and output operations.
+Here's how you can open and read a file using ifstream (input file stream):
