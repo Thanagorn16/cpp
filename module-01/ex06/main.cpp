@@ -6,7 +6,7 @@
 /*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 14:35:02 by truangsi          #+#    #+#             */
-/*   Updated: 2023/08/29 17:08:24 by truangsi         ###   ########.fr       */
+/*   Updated: 2023/08/29 19:25:39 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,16 @@ int	main(int ac, char** av)
 	switch(harl.index)
 	{
 		case 0:
-			(harl.complain(av[1]));
+			(harl.complain());
 			break ;
 		case 1:
-			(harl.complain(av[1]));
+			(harl.complain());
 			break ;
 		case 2:
-			(harl.complain(av[1]));
+			(harl.complain());
 			break ;
 		case 3:
-			(harl.complain(av[1]));
+			(harl.complain());
 			break ;
 		default:
 			std::cout << "The comment does not exist" << std::endl;

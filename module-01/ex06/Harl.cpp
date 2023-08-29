@@ -6,7 +6,7 @@
 /*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 16:07:32 by truangsi          #+#    #+#             */
-/*   Updated: 2023/08/29 17:04:36 by truangsi         ###   ########.fr       */
+/*   Updated: 2023/08/29 19:25:46 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,15 @@ void	Harl::getIndex(std::string level)
 	for (int i = 0; i < 4; i++)
 	{
 		if (_comments[i].compare(level) == 0)
+		{
 			index = i;
+			return ;
+		}
 	}
-	index = 4;
+	index = -1;
 }
 
-void	Harl::complain(std::string level)
+void	Harl::complain()
 {
-	for (int i = 0; i < 4; i++)
-	{
-		if (_comments[i].compare(level) == 0)
-			(this->*funcPtr[i])();
-	}
+	(this->*funcPtr[index])();
 }

@@ -6,7 +6,7 @@
 /*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 14:35:16 by truangsi          #+#    #+#             */
-/*   Updated: 2023/08/29 16:54:55 by truangsi         ###   ########.fr       */
+/*   Updated: 2023/08/29 19:21:30 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ class Harl
 
 		void	init();
 		void	getIndex(std::string level);
-		void	complain(std::string level);
+		void	complain();
 };
 
 #endif
