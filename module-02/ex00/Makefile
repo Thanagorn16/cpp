@@ -6,15 +6,15 @@
 #    By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/28 15:28:54 by truangsi          #+#    #+#              #
-#    Updated: 2023/08/29 16:16:06 by truangsi         ###   ########.fr        #
+#    Updated: 2023/08/31 10:38:17 by truangsi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = harlFilter
+NAME = Fixed
 
-SRCS = main.cpp Harl.cpp
+SRCS = main.cpp Fixed.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

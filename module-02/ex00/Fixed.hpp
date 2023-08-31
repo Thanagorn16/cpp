@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/30 11:44:58 by truangsi          #+#    #+#             */
-/*   Updated: 2023/08/30 17:10:09 by truangsi         ###   ########.fr       */
+/*   Created: 2023/08/30 11:45:12 by truangsi          #+#    #+#             */
+/*   Updated: 2023/08/31 11:17:42 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#ifndef FIXED_HPP
+#define FIXED_HPP
 
-int main( void )
+#include <iostream>
+
+class	Fixed
 {
-	Fixed a;
-	Fixed b( a );
-	Fixed c;
+	private:
+		int					_fixedNumValue;
+		static const int	fracNumBit = 8;
 
-	c = b;
+	public:
+		Fixed(void);
+		Fixed(const Fixed& other);
+		Fixed& operator=(const Fixed& other);
+		~Fixed(void);
 
-	std::cout << a.getRawBits() << std::endl;
-	std::cout << b.getRawBits() << std::endl;
-	std::cout << c.getRawBits() << std::endl;
+		void setRawBits(int const raw );
+		int getRawBits(void ) const;
+};
 
-	return 0;
-}
+#endif
