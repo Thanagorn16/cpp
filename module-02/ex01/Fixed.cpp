@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: prachman <prachman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 11:53:11 by truangsi          #+#    #+#             */
-/*   Updated: 2023/08/31 11:22:44 by truangsi         ###   ########.fr       */
+/*   Updated: 2023/09/01 16:19:49 by prachman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,26 @@
 Fixed::Fixed()
 {
 	std::cout << "Default constructor called" << std::endl;
-	_fixedNumValue = 0;
+	_fixedValue = 0;
 }
 
+Fixed::Fixed(const int value)
+{
+	std::cout << "Int constructor called" << std::endl;
+	_fixedValue = value << _fracBit;
+}
+
+Fixed::Fixed(const float value)
+{
+	std::cout << "Float constructor called" << std::endl;
+	_fixedValue = static_cast<int>(std::round(value * (1 << _fracBit)));
+}
 
 Fixed::Fixed(const Fixed& other)
 {
 	std::cout << "Copy constructor called" << std::endl;
-	this->setRawBits(other.getRawBits());
-	// *this = other;
+	*this = other;
+	// this->setRawBits(other.getRawBits());
 }
 
 Fixed& Fixed::operator=(const Fixed& other)
@@ -41,11 +52,33 @@ Fixed::~Fixed()
 
 int	Fixed::getRawBits() const
 {
-	std::cout << "getRawBits member function called" << std::endl;
-	return (_fixedNumValue);
+	// std::cout << "getRawBits member function called" << std::endl;
+	return (_fixedValue);
 }
 
 void	Fixed::setRawBits(int const raw)
 {
-	_fixedNumValue = raw;
+	_fixedValue = raw;
+}
+
+int	Fixed::toInt() const
+{
+	int	intValue;
+
+	intValue = _fixedValue >> _fracBit;
+	return (intValue);
+}
+
+float	Fixed::toFloat() const
+{
+	float	floatValue;
+
+	floatValue = static_cast<float>(_fixedValue) / (1 << _fracBit);
+	return (floatValue);
+}
+
+std::ostream& operator<<(std::ostream& os, const Fixed& obj)
+{
+	os << obj.toFloat();
+	return (os);
 }
