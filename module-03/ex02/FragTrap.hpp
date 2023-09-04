@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/03 13:11:19 by prachman          #+#    #+#             */
-/*   Updated: 2023/09/04 13:38:48 by truangsi         ###   ########.fr       */
+/*   Created: 2023/09/04 13:40:10 by truangsi          #+#    #+#             */
+/*   Updated: 2023/09/04 14:03:21 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#ifndef FLAG_TRAP_CPP
+#define FLAG_TRAP_CPP
 
-int main()
+#include "ClapTrap.hpp"
+
+class	FragTrap : public ClapTrap
 {
-	ScavTrap	scv("First");
+	private:
 
-	scv.attack("a tree");
-	scv.takeDamage(10);
-	scv.beRepaired(10);
-	scv.guardGate();
-	return (0);
-}
+	public:
+		FragTrap(std::string name);
+		~FragTrap();
+
+		void	highFiveGuys(void);
+};
+
+#endif

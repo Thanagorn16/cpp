@@ -6,7 +6,7 @@
 /*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 13:11:44 by prachman          #+#    #+#             */
-/*   Updated: 2023/09/04 14:22:42 by truangsi         ###   ########.fr       */
+/*   Updated: 2023/09/04 14:23:50 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoint(10), _energyPoint(
 	std::cout << "Created ClapTrap: " << _name << std::endl;
 }
 
-ClapTrap::ClapTrap(const ClapTrap& obj) :
+ClapTrap::ClapTrap(const ClapTrap& obj) : //check whether it is a hard copy
 	_name(obj._name), _hitPoint(obj._hitPoint), _energyPoint(obj._energyPoint), _attDmg(obj._attDmg)
 {
 	std::cout << "Created a clone of " << obj._name << std::endl;
@@ -41,7 +41,7 @@ ClapTrap::~ClapTrap()
 	std::cout << "ClapTrap has been destroyed" << std::endl;
 }
 
-void    ClapTrap::attack(const std::string& target)
+void	ClapTrap::attack(const std::string& target)
 {
 	if (_energyPoint == 0)
 	{
@@ -54,7 +54,7 @@ void    ClapTrap::attack(const std::string& target)
 	std::cout << "it has " << _energyPoint << " energy left" << std::endl;
 }
 
-void    ClapTrap::takeDamage(unsigned int amount)
+void	ClapTrap::takeDamage(unsigned int amount)
 {
 	_hitPoint -= amount;
 	std::cout << "ClapTrap " << _name << " took " << amount << " damage" << std::endl;
@@ -64,7 +64,7 @@ void    ClapTrap::takeDamage(unsigned int amount)
 		std::cout << "ClapTrap " << _name << " has died" << std::endl;
 }
 
-void    ClapTrap::beRepaired(unsigned int amount)
+void	ClapTrap::beRepaired(unsigned int amount)
 {
 	if (_energyPoint == 0)
 	{
