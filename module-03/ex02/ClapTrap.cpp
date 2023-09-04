@@ -6,7 +6,7 @@
 /*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 13:11:44 by prachman          #+#    #+#             */
-/*   Updated: 2023/09/04 14:23:50 by truangsi         ###   ########.fr       */
+/*   Updated: 2023/09/04 18:56:23 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ void	ClapTrap::beRepaired(unsigned int amount)
 		return ;
 	}
 	_hitPoint += amount;
+	--_energyPoint;
 	std::cout << "ClapTrap " << _name << " has been repaired" << std::endl;
 	std::cout << "it has " << _hitPoint << " health left" << std::endl;
+	std::cout << "it has " << _energyPoint << " energy left" << std::endl;
 }
