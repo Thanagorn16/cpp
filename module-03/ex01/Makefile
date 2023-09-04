@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: prachman <prachman@student.42.fr>          +#+  +:+       +#+         #
+#    By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/28 15:28:54 by truangsi          #+#    #+#              #
-#    Updated: 2023/09/03 22:04:02 by prachman         ###   ########.fr        #
+#    Updated: 2023/09/04 13:06:57 by truangsi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = Serena
+NAME = ScavTrap
 
 SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp
 
