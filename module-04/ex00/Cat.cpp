@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prachman <prachman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 21:48:24 by prachman          #+#    #+#             */
-/*   Updated: 2023/09/05 21:59:11 by prachman         ###   ########.fr       */
+/*   Updated: 2023/09/06 11:44:46 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,6 @@ Cat::Cat() : Animal("Cat")
 {
 	std::cout << this->_type << " has been created" << std::endl;
 }
-
-// Cat::Cat()
-// {
-// 	std::cout << this->_type << " has been created" << std::endl;
-// }
 
 Cat::~Cat()
 {

@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/05 21:31:11 by prachman          #+#    #+#             */
-/*   Updated: 2023/09/06 11:44:37 by truangsi         ###   ########.fr       */
+/*   Created: 2023/09/06 11:03:22 by truangsi          #+#    #+#             */
+/*   Updated: 2023/09/06 11:12:05 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#ifndef W_CAT_HPP
+#define W_CAT_HPP
 
-Dog::Dog() : Animal("Dog")
-{
-	std::cout << this->_type << " has been created" << std::endl;
-}
+#include "WrongAnimal.hpp"
 
-Dog::~Dog()
+class	WrongCat : public WrongAnimal
 {
-	std::cout << this->_type << " destructur called" << std::endl;
-}
+	public:
+		WrongCat(void);
+		~WrongCat(void);
 
-void	Dog::makeSound() const
-{
-	std::cout << "*BARK* *BARK*" << std::endl;
-}
+		void	makeSound(void) const;
+};
+
+#endif

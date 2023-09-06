@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prachman <prachman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 20:18:12 by prachman          #+#    #+#             */
-/*   Updated: 2023/09/05 22:05:06 by prachman         ###   ########.fr       */
+/*   Updated: 2023/09/06 11:17:12 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 #include "Cat.hpp"
+#include "WrongCat.hpp"
 
 int	main()
 {
@@ -28,6 +29,18 @@ int	main()
 	delete j;
 	delete i;
 	delete meta;
+
+	std::cout << "****************** WRONG ANIMAL ******************" << std::endl;
+
+	const WrongAnimal* wrongMeta = new WrongAnimal();
+	const WrongAnimal* wrongI = new WrongCat();
+
+	std::cout << "type: " << wrongI->getType() << " " << std::endl;
+	wrongI->makeSound(); //will output the cat sound!
+	wrongMeta->makeSound();
+
+	delete wrongI;
+	delete wrongMeta;
 
 	return 0;
 }
