@@ -6,7 +6,7 @@
 /*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 13:50:14 by truangsi          #+#    #+#             */
-/*   Updated: 2023/09/06 10:49:01 by truangsi         ###   ########.fr       */
+/*   Updated: 2023/09/06 15:28:52 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
 	this->_hitPoint = 100;
-	this->_energyPoint = 50;
+	this->_energyPoint = 100;
 	this->_attDmg = 30;
 	std::cout << "Created a FragTrap: " << this->_name << std::endl;
 }

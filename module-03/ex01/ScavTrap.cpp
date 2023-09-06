@@ -6,7 +6,7 @@
 /*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 11:15:35 by truangsi          #+#    #+#             */
-/*   Updated: 2023/09/04 18:59:28 by truangsi         ###   ########.fr       */
+/*   Updated: 2023/09/06 15:18:28 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 	this->_hitPoint = 100;
 	this->_energyPoint = 50;
 	this->_attDmg = 20;
-	std::cout << "Created a ScravTrap: " << this->_name << std::endl;
+	std::cout << "Created a ScavTrap: " << this->_name << std::endl;
 }
 
 ScavTrap::~ScavTrap()
