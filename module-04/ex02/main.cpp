@@ -6,42 +6,37 @@
 /*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 20:18:12 by prachman          #+#    #+#             */
-/*   Updated: 2023/09/07 14:39:51 by truangsi         ###   ########.fr       */
+/*   Updated: 2023/09/07 13:39:44 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 #include "Cat.hpp"
-#include "WrongCat.hpp"
 
-int	main()
+int main()
 {
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
+	Animal* cat = new Cat();
+	Animal* dog = new Dog();
 
+	delete cat;
+	delete dog;
 
-	std::cout << "type: " << j->getType() << " " << std::endl;
-	std::cout << "type: " << i->getType() << " " << std::endl;
-	i->makeSound(); //will output the cat sound!
-	j->makeSound();
-	meta->makeSound();
+    std::cout << "////////////////////////////////////////" << std::endl;
+	Dog basic;
+	{
+		Dog tmp = basic;
+	}
+    std::cout << "////////////////////////////////////////" << std::endl;
+	int n = 4;
+	Animal* animals[4] = { new Dog(), new Dog(), new Cat(), new Cat() };
+	for (int i = 0; i < n; i++) {
+		std::cout << animals[i]->getType() << " : ";
+		animals[i]->makeSound();
+		delete animals[i];
+	}
 
-	delete j;
-	delete i;
-	delete meta;
-
-	std::cout << "****************** WRONG ANIMAL ******************" << std::endl;
-
-	const WrongAnimal* wrongMeta = new WrongAnimal();
-	const WrongAnimal* wrongI = new WrongCat();
-
-	std::cout << "type: " << wrongI->getType() << " " << std::endl;
-	wrongI->makeSound(); //will output the wrong cat sound!
-	wrongMeta->makeSound();
-
-	delete wrongI;
-	delete wrongMeta;
+	// can't instantiate due to being an abstract class
+	// Animal	ani;
 
 	return 0;
 }

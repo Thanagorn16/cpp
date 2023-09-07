@@ -6,7 +6,7 @@
 /*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 16:06:20 by truangsi          #+#    #+#             */
-/*   Updated: 2023/09/07 12:00:32 by truangsi         ###   ########.fr       */
+/*   Updated: 2023/09/07 13:39:12 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class	Animal
 		virtual	~Animal(void);
 
 		std::string		getType() const;
-		virtual void	makeSound(void) const;
+		virtual void	makeSound(void) const = 0;
 };
 
 #endif

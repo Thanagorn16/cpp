@@ -6,7 +6,7 @@
 /*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 20:18:12 by prachman          #+#    #+#             */
-/*   Updated: 2023/09/06 14:11:39 by truangsi         ###   ########.fr       */
+/*   Updated: 2023/09/07 12:03:42 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int main()
 	int n = 4;
 	Animal* animals[4] = { new Dog(), new Dog(), new Cat(), new Cat() };
 	for (int i = 0; i < n; i++) {
+		std::cout << animals[i]->getType() << " : ";
+		animals[i]->makeSound();
 		delete animals[i];
 	}
 

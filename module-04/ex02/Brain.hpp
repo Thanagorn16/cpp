@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/04 16:06:20 by truangsi          #+#    #+#             */
-/*   Updated: 2023/09/07 12:00:32 by truangsi         ###   ########.fr       */
+/*   Created: 2023/09/06 12:07:29 by truangsi          #+#    #+#             */
+/*   Updated: 2023/09/06 12:14:09 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-#define ANIMAL_HPP
+#ifndef BRAIN_HPP
+#define BRAIN_HPP
 
 #include <iostream>
-#include "Brain.hpp"
 
-class	Animal
+class	Brain
 {
-	protected:
-		std::string _type;
-
+	private:
+		std::string	_ideas[100];
 	public:
-		Animal(void);
-		Animal(std::string type);
-		Animal(const Animal& obj);
-		Animal& operator=(const Animal& obj);
-		virtual	~Animal(void);
-
-		std::string		getType() const;
-		virtual void	makeSound(void) const;
+		Brain(void);
+		Brain(const Brain& obj);
+		Brain&	operator=(const Brain& obj);
+		~Brain(void);
 };
 
 #endif

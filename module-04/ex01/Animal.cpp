@@ -6,7 +6,7 @@
 /*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 20:20:19 by prachman          #+#    #+#             */
-/*   Updated: 2023/09/06 11:02:27 by truangsi         ###   ########.fr       */
+/*   Updated: 2023/09/07 14:53:48 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@ Animal::Animal(const Animal& obj)
 
 Animal&	Animal::operator=(const Animal& obj)
 {
+	std::cout << "Animal assignment operator called" << std::endl;
 	if (this != &obj)
-		this->_type = obj.getType();
+		this->_type = obj._type;
 	return (*this);
 }
 

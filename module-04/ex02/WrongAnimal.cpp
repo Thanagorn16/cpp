@@ -6,7 +6,7 @@
 /*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 10:34:12 by truangsi          #+#    #+#             */
-/*   Updated: 2023/09/07 14:45:14 by truangsi         ###   ########.fr       */
+/*   Updated: 2023/09/07 14:56:01 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ WrongAnimal::WrongAnimal(const WrongAnimal& obj)
 
 WrongAnimal&	WrongAnimal::operator=(const WrongAnimal& obj)
 {
-	std::cout << "Wrong Animal assigment operator called" << std::endl;
+	std::cout << "Wrong Animal assignment operator called" << std::endl;
 	if (this != &obj)
 		this->_type = obj._type;
 	return (*this);

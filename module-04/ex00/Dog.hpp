@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prachman <prachman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 20:53:28 by prachman          #+#    #+#             */
-/*   Updated: 2023/09/05 21:55:09 by prachman         ###   ########.fr       */
+/*   Updated: 2023/09/07 14:11:55 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ class	Dog : public Animal
 {
 	public:
 		Dog(void);
+		Dog(const Dog& type);
+		Dog& operator=(const Dog& obj);
 		~Dog(void);
 
 		void	makeSound(void) const;
