@@ -24,14 +24,14 @@ class	Bureaucrat
 	private:
 		const std::string	_name;
 		int					_grade;
-	
+
 	public:
 		Bureaucrat(std::string name, int grade);
 		Bureaucrat(const Bureaucrat& obj);
 		Bureaucrat& operator=(const Bureaucrat& obj);
 		~Bureaucrat(void);
 
-		void		signedForm(const Form& obj);
+		void		signedForm(Form& form);
 		std::string	getName() const;
 		int			getGrade() const;
 

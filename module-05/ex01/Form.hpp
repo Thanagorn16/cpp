@@ -20,11 +20,11 @@ class Bureaucrat;
 class Form
 {
 	private:
-		const std::string   _name;
+		const std::string	_name;
 		const int			_gradeSi;
 		const int 			_gradeEx;
-		bool                _isSigned;
-	
+		bool				_isSigned;
+
 	public:
 		Form(const std::string& name, int gradeSi, int gradeEx);
 		Form(const std::string& name);
@@ -32,18 +32,18 @@ class Form
 		Form& operator=(const Form& obj);
 		~Form(void);
 
-		void		beSigned(const Bureaucrat& obj);
+		void		beSigned(const Bureaucrat& bureaucrat);
 		std::string	getName() const;
 		int			getGradeSi() const;
 		int			getGradeEx() const;
 		bool		getIsSigned() const;
 
-		class GradeTooHighException : std::exception
+		class GradeTooHighException : public std::exception
 		{
 			public:
 				virtual const char *what() const throw() {return ("Grade too high");};
 		};
-		class GradeTooLowException : std::exception
+		class GradeTooLowException : public std::exception
 		{
 			public:
 				virtual const char *what() const throw() {return ("Grade too low");};

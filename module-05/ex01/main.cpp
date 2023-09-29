@@ -14,20 +14,35 @@
 
 int main()
 {
-	try
 	{
-		Bureaucrat  obj("Jim", 0);
-		// Bureaucrat  obj("Jim", 0);
-		// Bureaucrat  obj("Jim", 151);
+		try
+		{
+			Bureaucrat  obj("Jim", 1);
+			Form		form("Contract", 2, 3);
 
-		std::cout << obj << std::endl;
+			std::cout << obj << std::endl;
+			std::cout << form << std::endl;
+			obj.signedForm(form);
+		}
+		catch(std::exception & e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
 	}
-	catch (Bureaucrat::GradeTooHighException & e)
 	{
-		std::cerr << e.what() << std::endl;
-	}
-	catch (Bureaucrat::GradeTooLowException & e)
-	{
-		std::cerr << e.what() << std::endl;
+		std::cout << std::endl;
+		try
+		{
+			Bureaucrat  obj("Jim", 1);
+			Form		form("Contract", 0, 156);
+
+			std::cout << obj << std::endl;
+			std::cout << form << std::endl;
+			obj.signedForm(form);
+		}
+		catch(std::exception & e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
 	}
 }

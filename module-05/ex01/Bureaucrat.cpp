@@ -40,6 +40,19 @@ Bureaucrat::~Bureaucrat() {
 
 // ****************************** Member functions ****************************** //
 
+void	Bureaucrat::signedForm(Form& form)
+{
+	try
+	{
+		form.beSigned(*this);
+		std::cout << this->getName() << " signed " << form.getName() << std::endl;
+	}
+	catch (Form::GradeTooLowException & e)
+	{
+		std::cerr << _name << " could not sign " << form.getName() << " because " << e.what() << std::endl;
+	}
+}
+
 std::string	Bureaucrat::getName() const
 {
 	return (_name);
