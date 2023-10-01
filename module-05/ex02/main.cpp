@@ -12,38 +12,21 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 int main()
 {
+	try
 	{
-		try
-		{
-			Bureaucrat  obj("Jim", 1);
-			Form		form("Contract", 2, 3);
-
-			std::cout << obj << std::endl;
-			std::cout << form << std::endl;
-			obj.signedForm(form);
-		}
-		catch(std::exception & e)
-		{
-			std::cerr << e.what() << std::endl;
-		}
+		Bureaucrat bureaucrat("A", 1);
+		ShrubberyCreationForm	scf("make");
+		// scf.beSigned(bureaucrat);
+		scf.execute(bureaucrat);
+		std::cout << "execute success!" << std::endl;
 	}
+	catch(std::exception & e)
 	{
-		std::cout << std::endl;
-		try
-		{
-			Bureaucrat  obj("Jim", 1);
-			Form		form("Contract", 0, 156);
-
-			std::cout << obj << std::endl;
-			std::cout << form << std::endl;
-			obj.signedForm(form);
-		}
-		catch(std::exception & e)
-		{
-			std::cerr << e.what() << std::endl;
-		}
+		std::cerr << e.what() << std::endl;
 	}
+
 }

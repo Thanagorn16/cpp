@@ -49,6 +49,14 @@ void	AForm::beSigned(const Bureaucrat& obj)
 	_isSigned = true;
 }
 
+void	AForm::execute(const Bureaucrat& bureaucrat) const
+{
+	if (!this->getIsSigned())
+		throw AForm::FormNotSignedException();
+	if (bureaucrat.getGrade() > this->getGradeEx())
+		throw Bureaucrat::GradeTooLowException();
+}
+
 std::string AForm::getName() const
 {
 	return (_name);

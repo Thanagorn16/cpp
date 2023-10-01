@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prachman <prachman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 12:35:48 by prachman          #+#    #+#             */
-/*   Updated: 2023/09/28 17:54:58 by prachman         ###   ########.fr       */
+/*   Updated: 2023/09/30 16:55:17 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,14 @@ Bureaucrat::~Bureaucrat() {
 
 // ****************************** Member functions ****************************** //
 
-void	Bureaucrat::signedForm(Form& form)
+void	Bureaucrat::signedForm(AForm& form)
 {
 	try
 	{
 		form.beSigned(*this);
 		std::cout << this->getName() << " signed " << form.getName() << std::endl;
 	}
-	catch (Form::GradeTooLowException & e)
+	catch (AForm::GradeTooLowException & e)
 	{
 		std::cerr << _name << " could not sign " << form.getName() << " because " << e.what() << std::endl;
 	}

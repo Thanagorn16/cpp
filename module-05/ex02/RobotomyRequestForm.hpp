@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/29 16:13:19 by truangsi          #+#    #+#             */
-/*   Updated: 2023/09/30 17:11:46 by truangsi         ###   ########.fr       */
+/*   Created: 2023/09/30 11:37:40 by truangsi          #+#    #+#             */
+/*   Updated: 2023/10/01 17:34:58 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCF_HPP
-#define SCF_HPP
+#ifndef RRF_HPP
+#define RRF_HPP
 
 #include "AForm.hpp"
-#include <fstream>
 
-class ShrubberyCreationForm : public AForm
+class RobotomyRequestForm : public AForm
 {
 	private:
 		std::string	_target;
 
 	public:
-		ShrubberyCreationForm(std::string _target);
-		ShrubberyCreationForm(const ShrubberyCreationForm& obj);
-		ShrubberyCreationForm& operator=(const ShrubberyCreationForm& obj);
-		~ShrubberyCreationForm();
+		RobotomyRequestForm(std::string _target);
+		RobotomyRequestForm(const RobotomyRequestForm& obj);
+		RobotomyRequestForm& operator=(const RobotomyRequestForm& obj);
+		~RobotomyRequestForm();
 
 		void	execute(const Bureaucrat& bureaucrat) const;
 };
