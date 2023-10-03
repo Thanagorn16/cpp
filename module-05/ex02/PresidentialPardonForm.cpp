@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
+/*   PresidentialPardonForm.cpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prachman <prachman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/01 17:33:13 by truangsi          #+#    #+#             */
-/*   Updated: 2023/10/03 13:47:30 by prachman         ###   ########.fr       */
+/*   Created: 2023/10/03 14:00:54 by prachman          #+#    #+#             */
+/*   Updated: 2023/10/03 14:12:19 by prachman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 // ****************************** Orthodox Canonical Form ****************************** //
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target) :
-	AForm("Robotomy", 72, 45), _target(target){}
+PresidentialPardonForm::PresidentialPardonForm(std::string target) :
+	AForm("Pardon", 25, 5), _target(target){}
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& obj) :
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& obj) :
 	AForm(obj.getName(), obj.getGradeSi(), obj.getGradeEx()) {}
 
-RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& obj)
+PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& obj)
 {
 	if (this != &obj)
 	{
@@ -31,20 +30,15 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& o
 	return (*this);
 }
 
-RobotomyRequestForm::~RobotomyRequestForm() {}
+PresidentialPardonForm::~PresidentialPardonForm() {}
 
 // ****************************** Member functions ****************************** //
 
-void	RobotomyRequestForm::execute(const Bureaucrat& bureaucrat) const
+void	PresidentialPardonForm::execute(const Bureaucrat& bureaucrat) const
 {
 	if (!this->getIsSigned())
-		throw RobotomyRequestForm::FormNotSignedException();
+		throw PresidentialPardonForm::FormNotSignedException();
 	if (bureaucrat.getGrade() > this->getGradeEx())
 		throw Bureaucrat::GradeTooLowException();
-	std::cout << "** drilling noises **" << std::endl;
-	srand(time(0));
-	if (rand() % 2)
-		std::cout << _target << " has been robotomized" << std::endl;
-	else
-		throw RobotomyRequestForm::RobotomizedException();
+    std::cout << _target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }

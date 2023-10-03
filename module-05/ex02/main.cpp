@@ -13,20 +13,57 @@
 
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main()
 {
-	try
 	{
-		Bureaucrat bureaucrat("A", 1);
-		ShrubberyCreationForm	scf("make");
-		// scf.beSigned(bureaucrat);
-		scf.execute(bureaucrat);
-		std::cout << "execute success!" << std::endl;
+		try
+		{
+			std::cout << "First try" << std::endl;
+			Bureaucrat bc("A", 1);
+			ShrubberyCreationForm	scf("make");
+			scf.beSigned(bc);
+			scf.execute(bc);
+			std::cout << "execute success!" << std::endl;
+			std::cout << "------------------" << std::endl;
+			RobotomyRequestForm	rrf("cat");
+			rrf.beSigned(bc),
+			rrf.execute(bc);
+			std::cout << "------------------" << std::endl;
+			PresidentialPardonForm	ppf("James");
+			ppf.beSigned(bc),
+			ppf.execute(bc);
+			std::cout << "------------------" << std::endl;
+			std::cout << std::endl;
+			std::cout << std::endl;
+		}
+		catch(std::exception & e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
 	}
-	catch(std::exception & e)
 	{
-		std::cerr << e.what() << std::endl;
+		try
+		{
+			std::cout << "Second try" << std::endl;
+			Bureaucrat bc("A", 1);
+			ShrubberyCreationForm	scf("make");
+			scf.beSigned(bc);
+			bc.executeForm(scf);
+			std::cout << "------------------" << std::endl;
+			RobotomyRequestForm	rrf("cat");
+			rrf.beSigned(bc),
+			bc.executeForm(rrf);
+			std::cout << "------------------" << std::endl;
+			PresidentialPardonForm	ppf("James");
+			ppf.beSigned(bc),
+			bc.executeForm(ppf);
+		}
+		catch(std::exception & e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
 	}
-
 }
