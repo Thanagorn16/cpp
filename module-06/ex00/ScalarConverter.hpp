@@ -6,7 +6,7 @@
 /*   By: prachman <prachman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 13:53:53 by prachman          #+#    #+#             */
-/*   Updated: 2023/10/08 11:39:15 by prachman         ###   ########.fr       */
+/*   Updated: 2023/10/08 15:17:46 by prachman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 class	ScalarConverter
 {
 	public:
+		float	myFloat;
+
 		ScalarConverter();
 		ScalarConverter(const ScalarConverter& obj);
 		ScalarConverter& operator=(const ScalarConverter& obj);

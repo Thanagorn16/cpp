@@ -6,7 +6,7 @@
 /*   By: prachman <prachman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 13:59:32 by prachman          #+#    #+#             */
-/*   Updated: 2023/10/08 14:07:07 by prachman         ###   ########.fr       */
+/*   Updated: 2023/10/08 15:17:09 by prachman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,10 @@ ScalarConverter::~ScalarConverter() {}
 
 // ****************************** Member functions ****************************** //
 
-// float	checkInput(std::string input)
-// {
-
-// }
-
-void	convertToChar(std::string input)
+bool	checkInput(std::string input, ScalarConverter& sc)
 {
 	size_t				fPos;
 	bool				dotPos = false;
-	float				myFloat;
-	char				myChar;
 	std::stringstream	ss;
 
 	if (input.find(".") != std::string::npos) // if '.' exists
@@ -49,7 +42,7 @@ void	convertToChar(std::string input)
 		if (input.find_first_of(".") != input.find_last_of(".")) // if there are more than one "."
 		{
 			std::cerr << "Impossible" << std::endl;
-			return ;
+			return (false);
 		}
 		dotPos = true;
 	}
@@ -59,35 +52,45 @@ void	convertToChar(std::string input)
 		if (input[fPos + 1] != '\0') // make sure that 'f' is at the end of string
 		{
 			std::cerr << "Impossible" << std::endl;
-			return ;
+			return (false);
 		}
 		input.erase(fPos, 1);
 	}
 	ss << input;
-	ss >> myFloat;
+	ss >> sc.myFloat;
 	if (ss.fail())
 	{
 		std::cerr << "Impossible" << std::endl;
-		return ;
+		return (false);
 	}
+	return (true);
+}
+
+void	convertToChar(std::string input, ScalarConverter& sc)
+{
 	// protect char
-	if (myFloat < 32 || myFloat > 126)
+	char	myChar;
+
+	if (!checkInput(input, sc))
+		return ;
+	if (sc.myFloat < 32 || sc.myFloat > 126)
 	{
 		std::cerr << "Non displayable" << std::endl;
 		return ;
 	}
-	myChar = static_cast<char>(myFloat);	
+	myChar = static_cast<char>(sc.myFloat);	
 	std::cout << "char: '" << myChar << "'" << std::endl;
 	std::cout << "---------------" << std::endl;
 }
 
-void	convertToInt(std::string input)
-{
+// void	convertToInt(std::string input)
+// {
 
-}
+// }
 
 void ScalarConverter::convert(const char *input)
 {
-	// std::cout << "111111111" <<std::endl;
-	convertToChar((std::string)input);
+	ScalarConverter	sc;
+
+	convertToChar((std::string)input, sc);
 }
