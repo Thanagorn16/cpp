@@ -6,7 +6,7 @@
 /*   By: prachman <prachman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 13:59:32 by prachman          #+#    #+#             */
-/*   Updated: 2023/10/08 15:17:09 by prachman         ###   ########.fr       */
+/*   Updated: 2023/10/08 22:38:03 by prachman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ bool	checkInput(std::string input, ScalarConverter& sc)
 		input.erase(fPos, 1);
 	}
 	ss << input;
-	ss >> sc.myFloat;
+	ss >> sc.myDouble;
 	if (ss.fail())
 	{
 		std::cerr << "Impossible" << std::endl;
@@ -68,29 +68,39 @@ bool	checkInput(std::string input, ScalarConverter& sc)
 
 void	convertToChar(std::string input, ScalarConverter& sc)
 {
-	// protect char
 	char	myChar;
 
 	if (!checkInput(input, sc))
 		return ;
-	if (sc.myFloat < 32 || sc.myFloat > 126)
+	if (sc.myDouble < 32 || sc.myDouble > 126)
 	{
 		std::cerr << "Non displayable" << std::endl;
 		return ;
 	}
-	myChar = static_cast<char>(sc.myFloat);	
+	myChar = static_cast<char>(sc.myDouble);	
 	std::cout << "char: '" << myChar << "'" << std::endl;
-	std::cout << "---------------" << std::endl;
 }
 
-// void	convertToInt(std::string input)
-// {
+void	convertToInt(std::string input, ScalarConverter& sc)
+{
+	int	myInt;
 
-// }
+	if (!checkInput(input, sc))
+		return ;
+	if (sc.myDouble < std::numeric_limits<int>::min() || sc.myDouble > std::numeric_limits<int>::max())	
+	{
+		std::cerr << "Impossible" << std::endl;
+		return ;
+	}
+	myInt = static_cast<int>(sc.myDouble);
+	std::cout << "int: " << myInt << std::endl;
+}
 
 void ScalarConverter::convert(const char *input)
 {
 	ScalarConverter	sc;
 
 	convertToChar((std::string)input, sc);
+	convertToInt((std::string)input, sc);
+	std::cout << "--------------------" << std::endl;
 }
