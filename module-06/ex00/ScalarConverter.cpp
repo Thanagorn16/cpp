@@ -6,30 +6,11 @@
 /*   By: prachman <prachman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 13:59:32 by prachman          #+#    #+#             */
-/*   Updated: 2023/10/09 15:40:36 by prachman         ###   ########.fr       */
+/*   Updated: 2023/10/09 21:35:23 by prachman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
-
-// ****************************** Orthodox Canonical Form ****************************** //
-
-ScalarConverter::ScalarConverter() {}
-
-ScalarConverter::ScalarConverter(const ScalarConverter& obj)
-{
-	*this = obj;
-}
-
-ScalarConverter& ScalarConverter::operator=(const ScalarConverter& obj)
-{
-	(void) obj;
-	return (*this);
-}
-
-ScalarConverter::~ScalarConverter() {}
-
-// ****************************** Member functions ****************************** //
 
 bool	checkInput(std::string input, ScalarConverter& sc)
 {
@@ -108,10 +89,25 @@ void	convertToFloat(std::string input, ScalarConverter& sc)
 		return ;
 	}
 	myFloat = static_cast<float>(sc.myDouble);
-	if (std::floor(myFloat) == myFloat)
+	if (std::floor(myFloat) == myFloat) // check if it's a whole number
 		std::cout << "float: " << myFloat << ".0f" << std::endl;
 	else
 		std::cout << "float: " << myFloat << "f" << std::endl;
+}
+
+void	convertToDouble(std::string input, ScalarConverter& sc)
+{
+	if (!checkInput(input, sc))
+		return ;
+	if (sc.myDouble < std::numeric_limits<double>::lowest() || sc.myDouble > std::numeric_limits<double>::max())
+	{
+		std::cerr << "Impossible" << std::endl;
+		return ;
+	}
+	if (std::floor(sc.myDouble) == sc.myDouble) // check if it's a whole number
+		std::cout << "double: " << sc.myDouble << ".0" << std::endl;
+	else
+		std::cout << "double: " << sc.myDouble << std::endl;
 }
 
 void ScalarConverter::convert(const char *input)
@@ -121,5 +117,6 @@ void ScalarConverter::convert(const char *input)
 	convertToChar((std::string)input, sc);
 	convertToInt((std::string)input, sc);
 	convertToFloat((std::string)input, sc);
+	convertToDouble((std::string)input, sc);
 	std::cout << "--------------------" << std::endl;
 }
