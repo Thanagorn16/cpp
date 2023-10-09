@@ -6,7 +6,7 @@
 /*   By: prachman <prachman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 13:53:53 by prachman          #+#    #+#             */
-/*   Updated: 2023/10/08 22:23:57 by prachman         ###   ########.fr       */
+/*   Updated: 2023/10/09 14:08:49 by prachman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ class	ScalarConverter
 {
 	public:
 		double	myDouble;
-		// float	myFloat;
 
 		ScalarConverter();
 		ScalarConverter(const ScalarConverter& obj);

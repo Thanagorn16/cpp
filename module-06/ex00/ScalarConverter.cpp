@@ -6,7 +6,7 @@
 /*   By: prachman <prachman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 13:59:32 by prachman          #+#    #+#             */
-/*   Updated: 2023/10/08 22:38:03 by prachman         ###   ########.fr       */
+/*   Updated: 2023/10/09 15:40:36 by prachman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,11 +96,30 @@ void	convertToInt(std::string input, ScalarConverter& sc)
 	std::cout << "int: " << myInt << std::endl;
 }
 
+void	convertToFloat(std::string input, ScalarConverter& sc)
+{
+	float	myFloat;	
+
+	if (!checkInput(input, sc))
+		return ;
+	if (sc.myDouble < std::numeric_limits<float>::lowest() || sc.myDouble > std::numeric_limits<float>::max())
+	{
+		std::cerr << "Impossible" << std::endl;
+		return ;
+	}
+	myFloat = static_cast<float>(sc.myDouble);
+	if (std::floor(myFloat) == myFloat)
+		std::cout << "float: " << myFloat << ".0f" << std::endl;
+	else
+		std::cout << "float: " << myFloat << "f" << std::endl;
+}
+
 void ScalarConverter::convert(const char *input)
 {
 	ScalarConverter	sc;
 
 	convertToChar((std::string)input, sc);
 	convertToInt((std::string)input, sc);
+	convertToFloat((std::string)input, sc);
 	std::cout << "--------------------" << std::endl;
 }
