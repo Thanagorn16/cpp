@@ -6,7 +6,7 @@
 #    By: prachman <prachman@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/28 15:28:54 by truangsi          #+#    #+#              #
-#    Updated: 2023/10/09 15:49:37 by prachman         ###   ########.fr        #
+#    Updated: 2023/10/10 18:31:45 by prachman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,10 +21,10 @@ OBJS = $(SRCS:.cpp=.o)
 all: $(NAME)
 
 %o:%cpp
-	@c++ $(FLAGS) -c $< -o $@
+	c++ $(FLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
-	@c++ $(OBJS) $(FLAGS) -o $(NAME)
+	c++ $(OBJS) $(FLAGS) -o $(NAME)
 
 clean:
 	rm -f $(OBJS)

@@ -6,11 +6,47 @@
 /*   By: prachman <prachman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 13:59:32 by prachman          #+#    #+#             */
-/*   Updated: 2023/10/09 21:35:23 by prachman         ###   ########.fr       */
+/*   Updated: 2023/10/10 18:30:57 by prachman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
+
+bool	handleSpecialValue(std::string input)
+{
+	bool		isBool = false;
+	std::string	arr[] = {"inf", "+inf", "inff", "+inff", "-inf", "-inff", "nan", "nanf"};
+
+	for (int i = 0; i < 8; i++)
+	{
+		if (input == arr[i])
+		{
+			std::cerr << "char: Impossible" << std::endl;
+			std::cerr << "int: Impossible" << std::endl;
+			break ;
+		}
+	}
+
+	if (input == "inf" || input == "+inf" || input == "inff" || input == "+inff")
+	{
+		std::cout << "float: " << std::numeric_limits<float>::infinity() << "f" << std::endl;
+		std::cout << "double: " << std::numeric_limits<double>::infinity() << std::endl;
+		isBool = true;
+	}
+	else if (input == "-inf" || input == "-inff")
+	{
+		std::cout << "float: " << -std::numeric_limits<float>::infinity() << "f" << std::endl;
+		std::cout << "double: " << -std::numeric_limits<double>::infinity() << std::endl;
+		isBool = true;
+	}
+	else if (input == "nan" || input == "nanf")
+	{
+		std::cout << "float: " <<std::numeric_limits<float>::quiet_NaN() << "f" << std::endl;
+		std::cout << "double: " <<std::numeric_limits<double>::quiet_NaN() << std::endl;
+		isBool = true;
+	}
+	return (isBool);
+}
 
 bool	checkInput(std::string input, ScalarConverter& sc)
 {
@@ -55,7 +91,7 @@ void	convertToChar(std::string input, ScalarConverter& sc)
 		return ;
 	if (sc.myDouble < 32 || sc.myDouble > 126)
 	{
-		std::cerr << "Non displayable" << std::endl;
+		std::cerr << "char: Non displayable" << std::endl;
 		return ;
 	}
 	myChar = static_cast<char>(sc.myDouble);	
@@ -70,7 +106,7 @@ void	convertToInt(std::string input, ScalarConverter& sc)
 		return ;
 	if (sc.myDouble < std::numeric_limits<int>::min() || sc.myDouble > std::numeric_limits<int>::max())	
 	{
-		std::cerr << "Impossible" << std::endl;
+		std::cerr << "int: impossible" << std::endl;
 		return ;
 	}
 	myInt = static_cast<int>(sc.myDouble);
@@ -85,7 +121,7 @@ void	convertToFloat(std::string input, ScalarConverter& sc)
 		return ;
 	if (sc.myDouble < std::numeric_limits<float>::lowest() || sc.myDouble > std::numeric_limits<float>::max())
 	{
-		std::cerr << "Impossible" << std::endl;
+		std::cerr << "float: impossible" << std::endl;
 		return ;
 	}
 	myFloat = static_cast<float>(sc.myDouble);
@@ -101,7 +137,7 @@ void	convertToDouble(std::string input, ScalarConverter& sc)
 		return ;
 	if (sc.myDouble < std::numeric_limits<double>::lowest() || sc.myDouble > std::numeric_limits<double>::max())
 	{
-		std::cerr << "Impossible" << std::endl;
+		std::cerr << "double: impossible" << std::endl;
 		return ;
 	}
 	if (std::floor(sc.myDouble) == sc.myDouble) // check if it's a whole number
@@ -114,9 +150,10 @@ void ScalarConverter::convert(const char *input)
 {
 	ScalarConverter	sc;
 
+	if (handleSpecialValue((std::string)input))
+		return ;
 	convertToChar((std::string)input, sc);
 	convertToInt((std::string)input, sc);
 	convertToFloat((std::string)input, sc);
 	convertToDouble((std::string)input, sc);
-	std::cout << "--------------------" << std::endl;
 }
