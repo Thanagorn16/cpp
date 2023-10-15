@@ -6,7 +6,7 @@
 /*   By: prachman <prachman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 12:48:11 by prachman          #+#    #+#             */
-/*   Updated: 2023/10/15 17:40:41 by prachman         ###   ########.fr       */
+/*   Updated: 2023/10/15 19:27:12 by prachman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ template <typename T>
 T& Array<T>::operator[](unsigned int index)
 {
 	if (index >= this->size() || static_cast<int>(index) < 0)
-		throw std::out_of_range("Index out of bounds");
+		throw Array::IndexOutOfBoundsException();
 	return _arr[index];
 }
 
@@ -56,6 +56,8 @@ Array<T>::~Array()
 	// std::cout << "Deconstructor called" << std::endl;
 	delete[] _arr;
 }
+
+// ****************************** Member functions ****************************** //
 
 template <typename T>
 unsigned int	Array<T>::size() const {return _size;}

@@ -6,7 +6,7 @@
 /*   By: prachman <prachman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 14:47:50 by prachman          #+#    #+#             */
-/*   Updated: 2023/10/15 17:44:53 by prachman         ###   ########.fr       */
+/*   Updated: 2023/10/15 19:22:52 by prachman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int main()
 		std::cout << obj4[2] << std::endl;
 		std::cout << obj4[-1] << std::endl;
 	}
-	catch (const std::out_of_range& e)
+	catch (std::exception & e)
 	{
 		std::cerr << e.what() << std::endl;
 	}

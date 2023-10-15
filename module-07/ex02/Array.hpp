@@ -6,7 +6,7 @@
 /*   By: prachman <prachman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 12:48:00 by prachman          #+#    #+#             */
-/*   Updated: 2023/10/15 17:31:32 by prachman         ###   ########.fr       */
+/*   Updated: 2023/10/15 19:23:56 by prachman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,12 @@ class	Array
 		unsigned int	size() const;
 
 		T&		operator[](unsigned int index);
+
+		class	IndexOutOfBoundsException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw() {return "Index is out of bounds";};
+		};
 };
 
 #include "Array.tpp"
