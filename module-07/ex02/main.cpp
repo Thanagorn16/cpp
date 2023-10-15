@@ -6,7 +6,7 @@
 /*   By: prachman <prachman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 14:47:50 by prachman          #+#    #+#             */
-/*   Updated: 2023/10/14 09:29:46 by prachman         ###   ########.fr       */
+/*   Updated: 2023/10/15 17:44:53 by prachman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,47 @@
 
 int main()
 {
-	Array<int> obj;
-	Array<size_t> obj2(3);
-	Array<size_t> obj3(obj2);
-	Array<size_t> obj4;
+	try
+	{
+		Array<int> obj;
+		Array<unsigned int> obj2(3);
+		Array<unsigned int> obj3(obj2);
+		Array<unsigned int> obj4;
 
-	// check deep copy
-	for (size_t i = 0; i < obj3._size; i++)
-	{
-		obj3._arr[i] += 1;
-		std::cout << obj3._arr[i] << std::endl;
+		// check deep copy
+		std::cout << "obj3" << std::endl;
+		for (unsigned int i = 0; i < obj3.size(); i++)
+		{
+			obj3[i] += 1;
+			std::cout << obj3[i] << std::endl;
+		}
+		std::cout << "obj2" << std::endl;
+		for (unsigned int i = 0; i < obj2.size(); i++)
+			std::cout << obj2[i] << std::endl;
+		obj4 = obj3;
+		std::cout << "obj4" << std::endl;
+		for (unsigned int i = 0; i < obj4.size(); i++)
+		{
+			obj4[i] += 1;
+			std::cout << obj4[i] << std::endl;
+		}
+		std::cout << "obj3" << std::endl;
+		for (unsigned int i = 0; i < obj3.size(); i++)
+			std::cout << obj3[i] << std::endl;
+		std::cout << "subsrcipt operator" << std::endl;
+		std::cout << obj4[0] << std::endl;
+		obj4[0] = 10;
+		for (unsigned int i = 0; i < obj4.size(); i++)
+			std::cout << obj4[i] << std::endl;
+		std::cout << "subsript operator exception" << std::endl;
+		std::cout << obj4[0] << std::endl;
+		std::cout << obj4[1] << std::endl;
+		std::cout << obj4[2] << std::endl;
+		std::cout << obj4[-1] << std::endl;
 	}
-	for (size_t i = 0; i < obj2._size; i++)
+	catch (const std::out_of_range& e)
 	{
-		std::cout << obj2._arr[i] << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
-	obj4 = obj3;
-	for (size_t i = 0; i < obj4._size; i++)
-	{
-		obj4._arr[i] += 1;
-		std::cout << obj4._arr[i] << std::endl;
-	}
-	for (size_t i = 0; i < obj3._size; i++)
-	{
-		std::cout << obj3._arr[i] << std::endl;
-	}
+	return 0;
 }
