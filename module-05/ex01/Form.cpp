@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prachman <prachman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 21:11:17 by prachman          #+#    #+#             */
-/*   Updated: 2023/09/28 21:51:08 by prachman         ###   ########.fr       */
+/*   Updated: 2023/11/16 11:29:21 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,7 @@ Form::Form(const Form& obj) :
 Form& Form::operator=(const Form& obj)
 {
 	if (this!= &obj)
-	{
-		// _name = obj.getName();
-		// _gradeSi = obj.getGradeSi();
-		// _gradeEx = obj.getGradeEx();
 		_isSigned = obj.getIsSigned();
-	}
 	return (*this);
 }
 

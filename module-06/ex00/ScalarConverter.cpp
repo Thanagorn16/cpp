@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prachman <prachman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 13:59:32 by prachman          #+#    #+#             */
-/*   Updated: 2023/10/10 18:30:57 by prachman         ###   ########.fr       */
+/*   Updated: 2023/11/17 12:09:06 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void	convertToChar(std::string input, ScalarConverter& sc)
 		std::cerr << "char: Non displayable" << std::endl;
 		return ;
 	}
-	myChar = static_cast<char>(sc.myDouble);	
+	myChar = static_cast<char>(sc.myDouble);
 	std::cout << "char: '" << myChar << "'" << std::endl;
 }
 
@@ -104,7 +104,7 @@ void	convertToInt(std::string input, ScalarConverter& sc)
 
 	if (!checkInput(input, sc))
 		return ;
-	if (sc.myDouble < std::numeric_limits<int>::min() || sc.myDouble > std::numeric_limits<int>::max())	
+	if (sc.myDouble < std::numeric_limits<int>::min() || sc.myDouble > std::numeric_limits<int>::max())
 	{
 		std::cerr << "int: impossible" << std::endl;
 		return ;
@@ -115,17 +115,17 @@ void	convertToInt(std::string input, ScalarConverter& sc)
 
 void	convertToFloat(std::string input, ScalarConverter& sc)
 {
-	float	myFloat;	
+	float	myFloat;
 
 	if (!checkInput(input, sc))
 		return ;
-	if (sc.myDouble < std::numeric_limits<float>::lowest() || sc.myDouble > std::numeric_limits<float>::max())
+	if (sc.myDouble < -std::numeric_limits<float>::max() || sc.myDouble > std::numeric_limits<float>::max())
 	{
 		std::cerr << "float: impossible" << std::endl;
 		return ;
 	}
 	myFloat = static_cast<float>(sc.myDouble);
-	if (std::floor(myFloat) == myFloat) // check if it's a whole number
+	if (floor(myFloat) == myFloat) // check if it's a whole number
 		std::cout << "float: " << myFloat << ".0f" << std::endl;
 	else
 		std::cout << "float: " << myFloat << "f" << std::endl;
@@ -135,12 +135,12 @@ void	convertToDouble(std::string input, ScalarConverter& sc)
 {
 	if (!checkInput(input, sc))
 		return ;
-	if (sc.myDouble < std::numeric_limits<double>::lowest() || sc.myDouble > std::numeric_limits<double>::max())
+	if (sc.myDouble < -std::numeric_limits<double>::max() || sc.myDouble > std::numeric_limits<double>::max())
 	{
 		std::cerr << "double: impossible" << std::endl;
 		return ;
 	}
-	if (std::floor(sc.myDouble) == sc.myDouble) // check if it's a whole number
+	if (floor(sc.myDouble) == sc.myDouble) // check if it's a whole number
 		std::cout << "double: " << sc.myDouble << ".0" << std::endl;
 	else
 		std::cout << "double: " << sc.myDouble << std::endl;

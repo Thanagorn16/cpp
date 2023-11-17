@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prachman <prachman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 14:05:16 by prachman          #+#    #+#             */
-/*   Updated: 2023/10/10 18:29:34 by prachman         ###   ########.fr       */
+/*   Updated: 2023/11/17 12:10:16 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,5 @@ int main(int ac, char **av)
 // 	ScalarConverter::convert("-inff");
 // 	ScalarConverter::convert("nan");
 // 	ScalarConverter::convert("nanf");
+// 	ScalarConverter::convert("-1000000000000000000000000000000000000000");
 // }
