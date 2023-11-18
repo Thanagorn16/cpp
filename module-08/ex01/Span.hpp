@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prachman <prachman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 19:05:19 by prachman          #+#    #+#             */
-/*   Updated: 2023/10/18 19:21:23 by prachman         ###   ########.fr       */
+/*   Updated: 2023/11/18 17:05:38 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class	Span
 	private:
 		std::vector<int>	_arr;
 		unsigned int		_size;
-	
+
 	public:
 		Span(void);
 		Span(unsigned int n);
@@ -33,11 +33,11 @@ class	Span
 		Span& operator=(const Span& obj);
 		~Span();
 
-		void			printElement();
+		void			printElement(void);
 		void			addNumber(int num);
 		void			addRangeOfNumber(int amt);
-		unsigned int	shortestSpan();
-		unsigned int	longestSpan();
+		unsigned int	shortestSpan(void);
+		unsigned int	longestSpan(void);
 
 		class	MaxmimunSizeException : public std::exception{
 			virtual const char* what() const throw() {return "Reached maxmimum capacity";};
@@ -47,7 +47,7 @@ class	Span
 		};
 };
 
-int				randomNumber();
+int	randomNumber(void);
 
 
 #endif

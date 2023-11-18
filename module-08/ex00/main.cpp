@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prachman <prachman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:21:46 by prachman          #+#    #+#             */
-/*   Updated: 2023/10/17 15:24:51 by prachman         ###   ########.fr       */
+/*   Updated: 2023/11/18 16:37:30 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,13 @@ int	main()
 		}
 	}
 	{
-		std::cout << "********** ARRAY **********" << std::endl;
-		std::array<int, 5>	vals = {1, 2, 3, 4, 5};
-		int					val2 = 3;
-		int					res;
+		std::cout << "********** DEQUE **********" << std::endl;
+		std::deque<int>	vals;
+		int				val2 = 3;
+		int				res;
 		try
 		{
+			for (int i = 0; i < 5; i++) vals.push_back(i + 1);
 			res = easyfind(vals, val2);
 			std::cout << val2 << " found at index " << res << std::endl;
 		}

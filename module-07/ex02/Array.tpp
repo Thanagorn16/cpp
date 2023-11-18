@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.tpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prachman <prachman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 12:48:11 by prachman          #+#    #+#             */
-/*   Updated: 2023/10/15 19:27:12 by prachman         ###   ########.fr       */
+/*   Updated: 2023/11/18 12:17:20 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ Array<T>& Array<T>::operator=(const Array& obj)
 	return *this;
 }
 
+// subscript operator
 template <typename T>
 T& Array<T>::operator[](unsigned int index)
 {

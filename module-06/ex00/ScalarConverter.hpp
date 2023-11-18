@@ -6,7 +6,7 @@
 /*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 13:53:53 by prachman          #+#    #+#             */
-/*   Updated: 2023/11/16 13:45:32 by truangsi         ###   ########.fr       */
+/*   Updated: 2023/11/18 10:37:33 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,14 @@
 
 class	ScalarConverter
 {
-	public:
-		double	myDouble;
-
+	private:
 		ScalarConverter();
 		ScalarConverter(const ScalarConverter& obj);
 		ScalarConverter& operator=(const ScalarConverter& obj);
 		~ScalarConverter();
+
+	public:
+		double	myDouble;
 
 		static void	convert(const char *input);
 };

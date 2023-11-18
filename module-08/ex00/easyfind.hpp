@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   easyfind.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prachman <prachman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 19:17:39 by prachman          #+#    #+#             */
-/*   Updated: 2023/10/17 15:22:32 by prachman         ###   ########.fr       */
+/*   Updated: 2023/11/18 16:36:57 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <iostream>
 #include <list>
 #include <vector>
+#include <deque>
 #include <exception>
 #include <algorithm>
 
