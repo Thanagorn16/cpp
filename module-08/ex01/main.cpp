@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prachman <prachman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 20:41:20 by prachman          #+#    #+#             */
-/*   Updated: 2023/10/19 14:47:43 by prachman         ###   ########.fr       */
+/*   Updated: 2023/11/19 16:47:21 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,49 @@
 
 int	main()
 {
+	std::srand(static_cast<unsigned>(std::time(0)));
 	try
 	{
 		Span	obj(3);
 		obj.addNumber(4);
 		obj.addNumber(5);
 		obj.addNumber(3);
-		std::cout << obj.shortestSpan() << std::endl;
-		std::cout << obj.longestSpan() << std::endl;
+		std::cout << "shortest span: " << obj.shortestSpan() << std::endl;
+		std::cout << "longest span: " << obj.longestSpan() << std::endl;
 	}
 	catch (std::exception & e)
 	{
 		std::cerr << "Error: " << e.what() << std::endl;
 	}
+
+	try
+	{
+		Span	obj(3);
+		obj.addNumber(1000);
+		obj.addNumber(900);
+		obj.addNumber(3);
+		std::cout << "shortest span: " << obj.shortestSpan() << std::endl;
+		std::cout << "longest span: " << obj.longestSpan() << std::endl;
+	}
+	catch (std::exception & e)
+	{
+		std::cerr << "Error: " << e.what() << std::endl;
+	}
+
 	try
 	{
 		Span	obj;
 
 		obj.addRangeOfNumber(100);
-		std::cout << obj.shortestSpan() << std::endl;
-		std::cout << obj.longestSpan() << std::endl;
+		std::cout << "generate: " << obj.getSize() << " numbers" << std::endl;
+		std::cout << "shortest span: " << obj.shortestSpan() << std::endl;
+		std::cout << "longest span: " << obj.longestSpan() << std::endl;
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << "Error: " << e.what() << std::endl;
 	}
+
 	try
 	{
 		Span	obj(3);
@@ -51,17 +69,16 @@ int	main()
 	{
 		std::cerr << "Error: " << e.what() << std::endl;
 	}
+
 	try
 	{
 		Span	obj(3);
 		obj.addNumber(4);
-		std::cout << obj.shortestSpan() << std::endl;
-		std::cout << obj.longestSpan() << std::endl;
+		std::cout << "shortest span: " << obj.shortestSpan() << std::endl;
+		std::cout << "longest span: " << obj.longestSpan() << std::endl;
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << "Error: " << e.what() << std::endl;
 	}
-	
-	
 }

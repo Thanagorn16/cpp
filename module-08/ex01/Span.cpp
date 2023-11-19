@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prachman <prachman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 19:20:23 by prachman          #+#    #+#             */
-/*   Updated: 2023/10/18 20:01:06 by prachman         ###   ########.fr       */
+/*   Updated: 2023/11/19 16:46:11 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,31 +46,29 @@ void    Span::addNumber(int num)
 }
 
 
-void	Span::addRangeOfNumber(int amt)
+void	Span::addRangeOfNumber(unsigned int amt)
 {
 	_size = amt;
-	std::srand(static_cast<unsigned>(std::time(0)));
-	std::vector<int>	tmp(amt);
+	std::vector<unsigned int>	tmp(amt);
 	std::generate(tmp.begin(), tmp.end(), randomNumber);
-	for (std::vector<int>::iterator it = tmp.begin(); it != tmp.end(); ++it)
+	for (std::vector<unsigned int>::iterator it = tmp.begin(); it != tmp.end(); ++it)
 		addNumber(*it);
 }
 
 unsigned int Span::shortestSpan()
 {
-	int							dist;
-	std::vector<int>			tmp;
-	std::vector<int>::iterator	min;
+	unsigned int						dist;
+	std::vector<unsigned int>			tmp;
+	std::vector<unsigned int>::iterator	min;
 
 	if (_arr.size() == 1)
 		throw InvalidSpanException();
-	for (std::vector<int>::iterator it = _arr.begin(); it != _arr.end(); it++)
+	std::sort(_arr.begin(), _arr.end(), std::greater<unsigned int>());
+	for (std::vector<unsigned int>::iterator it = _arr.begin(); it != _arr.end(); it++)
 	{
-		for (std::vector<int>::iterator ip = std::next(it); ip != _arr.end(); ip++)
+		for (std::vector<unsigned int>::iterator ip = std::next(it); ip != _arr.end(); ip++)
 		{
 			dist = *it - *ip;
-			if (dist < 0)
-				dist *= -1;
 			tmp.push_back(dist);
 		}
 	}
@@ -82,19 +80,18 @@ unsigned int Span::shortestSpan()
 
 unsigned int Span::longestSpan()
 {
-	int							dist;
-	std::vector<int>			tmp;
-	std::vector<int>::iterator	max;
+	unsigned int						dist;
+	std::vector<unsigned int>			tmp;
+	std::vector<unsigned int>::iterator	max;
 
 	if (_arr.size() == 1)
 		throw InvalidSpanException();
-	for (std::vector<int>::iterator it = _arr.begin(); it != _arr.end(); it++)
+	std::sort(_arr.begin(), _arr.end(), std::greater<unsigned int>());
+	for (std::vector<unsigned int>::iterator it = _arr.begin(); it != _arr.end(); it++)
 	{
-		for (std::vector<int>::iterator ip = std::next(it); ip != _arr.end(); ip++)
+		for (std::vector<unsigned int>::iterator ip = std::next(it); ip != _arr.end(); ip++)
 		{
 			dist = *it - *ip;
-			if (dist < 0)
-				dist *= -1;
 			tmp.push_back(dist);
 		}
 	}
@@ -102,15 +99,21 @@ unsigned int Span::longestSpan()
 	if (max == tmp.end())
 		throw InvalidSpanException();
 	return *max;
-
 }
+
+unsigned int	Span::getSize() {return _size;}
 
 void    Span::printElement()
 {
-	for (std::vector<int>::iterator it = _arr.begin(); it != _arr.end(); ++it)
+	for (std::vector<unsigned int>::iterator it = _arr.begin(); it != _arr.end(); ++it)
 		std::cout << *it << std::endl;
 }
 
 // ****************************** Others ****************************** //
 
-int	randomNumber() {return static_cast<int>(std::rand() * 2);}
+unsigned int randomNumber() {
+	int randNum = std::rand();
+	if (randNum < 0)
+		randNum = -randNum;
+	return static_cast<unsigned>(randNum);
+}

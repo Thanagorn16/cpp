@@ -6,7 +6,7 @@
 /*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 19:05:19 by prachman          #+#    #+#             */
-/*   Updated: 2023/11/18 17:05:38 by truangsi         ###   ########.fr       */
+/*   Updated: 2023/11/19 16:46:23 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 class	Span
 {
 	private:
-		std::vector<int>	_arr;
+		std::vector<unsigned int>	_arr;
 		unsigned int		_size;
 
 	public:
@@ -35,7 +35,8 @@ class	Span
 
 		void			printElement(void);
 		void			addNumber(int num);
-		void			addRangeOfNumber(int amt);
+		void			addRangeOfNumber(unsigned int amt);
+		unsigned int	getSize(void);
 		unsigned int	shortestSpan(void);
 		unsigned int	longestSpan(void);
 
@@ -47,7 +48,7 @@ class	Span
 		};
 };
 
-int	randomNumber(void);
+unsigned int	randomNumber(void);
 
 
 #endif
