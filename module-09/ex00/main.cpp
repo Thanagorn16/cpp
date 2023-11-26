@@ -6,42 +6,47 @@
 /*   By: prachman <prachman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 19:55:49 by prachman          #+#    #+#             */
-/*   Updated: 2023/11/25 15:26:43 by prachman         ###   ########.fr       */
+/*   Updated: 2023/11/26 13:21:21 by prachman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-int	countInputLine(char **av)
+int	storeData(dataMap &bitMap)
 {
-	int				line = 0;
-	std::string		tmp;
-	std::ifstream	fs;
+	std::ifstream					fs;
+	std::string						row, value;
 
-	fs.open(av[1]);
-	while (getline(fs, tmp))
+	fs.open("data.csv");
+	if (!fs.is_open())
+		return (std::cerr << "Error: Cannot open data file" << std::endl, 0);
+	std::string	line;
+	std::string	tmp;
+	while (getline(fs, line))
 	{
-		if (tmp.empty())
-			continue ;
-		line++;
+		if (line.empty())
+			continue;
+		std::istringstream ss(line);
+		getline(ss, row, ',');
+		getline(ss, value);
+		std::stringstream	converter;
+		float	fvalue;
+		converter << value;
+		converter >> fvalue;
+		bitMap[row] = fvalue;
 	}
-	// std::cout << line << std::endl;
-	return (line);
+	fs.close();
+	return (1);
 }
 
-int	main(int ac, char **av)
+int	storeInputData(char **av, inputData *inData)
 {
-	int								inputLine = countInputLine(av);
 	std::ifstream					fs;
-	std::map<std::string, float>	bitMap;
 	std::string						row, value;
-	InputData						inData[inputLine];
 
-	if (ac != 2)
-		return (std::cerr << "Error: Invalid arguments" << std::endl, 1);
 	fs.open(av[1]);
 	if (!fs.is_open())
-		return (std::cerr << "Error: Cannot open the file" << std::endl, 1);
+		return (std::cerr << "Error: Cannot open the file" << std::endl, 0);
 	std::string	line;
 	std::string	tmp;
 	int	i = 0;
@@ -62,25 +67,48 @@ int	main(int ac, char **av)
 		inData[i].inputValue = fvalue;
 		i++;
 	}
-	for (int i = 1; i < countInputLine(av); i++)
+	fs.close();
+	return (1);
+}
+
+void	validateInput(inputData *inData, int dataSize)
+{
+	for (int i = 1; i < dataSize; i++)
 	{
-		std::cout << "row: " << inData[i].inputDate << std::endl;
-		std::cout << "val: " << inData[i].inputValue << std::endl;
-		std::cout << "bool: " << inData[i].isValue << std::endl;
+		int	dateDigit = 0;
+		int	dateHyphen = 0;
+		for (size_t j = 0; j < inData[i].inputDate.length(); j++)	
+		{
+			if (isdigit(inData[i].inputDate[j]))
+				dateDigit++;
+			if (inData[i].inputDate[j] == '-')
+				dateHyphen++;
+		}
+		if (dateDigit != 8 || dateHyphen != 2 || !inData[i].isValue)
+		{
+			std::cerr << "Error: bad input => " << inData[i].inputDate << std::endl;
+			continue ;
+		}
+		if (inData[i].inputValue > 1000) {std::cout << "Error: number is too large." << std::endl; continue;}
+		else if (inData[i].inputValue < 0) {std::cout << "Error: number is too small." << std::endl; continue;}
+		// std::cout << inData[i].inputDate << std::endl;
+		// std::cout << inData[i].inputValue << std::endl;
 	}
 }
-// int	main()
-// {
-// 	std::map<std::string, int> key;
 
-// 	key["a"]=10;
-// 	key["c"]=30;
-// 	key["b"]=20;
-// 	key["d"]=40;
+int	main(int ac, char **av)
+{
+	int								dataSize = countInputLine(av);
+	std::ifstream					fs;
+	dataMap							bitMap;
+	std::string						row, value;
+	inputData						inData[dataSize];
 
-// 	for (std::map<std::string, int>::iterator it=key.begin(); it!=key.end(); ++it)
-// 		std::cout << it->first << " >> " << it->second <<std::endl;
-// 	std::cout << "reverse" << std::endl;
-// 	for (std::map<std::string, int>::reverse_iterator rit=key.rbegin(); rit!=key.rend(); ++rit)
-// 		std::cout << rit->first << " >> " << rit->second <<std::endl;
-// }
+	if (ac != 2)
+		return (std::cerr << "Error: Invalid arguments" << std::endl, 1);
+	storeData(bitMap);
+	storeInputData(av, inData);
+	validateInput(inData, dataSize);
+	// printData(av, inData);
+	// printMap(bitMap);
+}

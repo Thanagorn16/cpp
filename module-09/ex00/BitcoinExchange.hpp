@@ -6,7 +6,7 @@
 /*   By: prachman <prachman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 16:21:39 by truangsi          #+#    #+#             */
-/*   Updated: 2023/11/25 13:40:18 by prachman         ###   ########.fr       */
+/*   Updated: 2023/11/26 10:46:55 by prachman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,18 @@
 #include <algorithm>
 #include <map>
 
-struct  InputData
+typedef std::map<std::string, float>	dataMap;
+
+struct  inputData
 {
-    std::string inputDate;
-    float       inputValue;
-    bool        isValue;
+	std::string inputDate;
+	float       inputValue;
+	bool        isValue;
 };
+
+void	printMap(dataMap bitMap);
+void	printInput(char **av, inputData *inData);
+int 	countInputLine(char **av);
 
 
 #endif
