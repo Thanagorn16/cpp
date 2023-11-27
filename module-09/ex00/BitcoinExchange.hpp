@@ -6,7 +6,7 @@
 /*   By: prachman <prachman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 16:21:39 by truangsi          #+#    #+#             */
-/*   Updated: 2023/11/26 10:46:55 by prachman         ###   ########.fr       */
+/*   Updated: 2023/11/27 09:27:07 by prachman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,12 @@ struct  inputData
 
 void	printMap(dataMap bitMap);
 void	printInput(char **av, inputData *inData);
+void	validateData(dataMap &bitMap);
+void	validateInput(inputData *inData, int dataSize);
+int		storeData(dataMap &bitMap);
+int		storeInput(char **av, inputData *inData);
 int 	countInputLine(char **av);
+
 
 
 #endif
