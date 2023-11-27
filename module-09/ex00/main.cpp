@@ -6,18 +6,31 @@
 /*   By: prachman <prachman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 19:55:49 by prachman          #+#    #+#             */
-/*   Updated: 2023/11/27 09:27:29 by prachman         ###   ########.fr       */
+/*   Updated: 2023/11/27 16:13:06 by prachman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
+void	processValue(inputData inData, dataMap &bitMap)
+{
+	dataMap::iterator key;
+
+	key = bitMap.find(inData.inputDate);
+	if (key != bitMap.end()) // if the key is found
+	{
+		std::cout << inData.inputDate << " >> = " << inData.inputValue * key->second << std::endl;
+	}
+	else
+	{
+		std::cout << "do nothing" << std::endl;
+	}
+}
+
 int	main(int ac, char **av)
 {
 	int								dataSize = countInputLine(av);
-	std::ifstream					fs;
 	dataMap							bitMap;
-	std::string						row, value;
 	inputData						inData[dataSize];
 
 	if (ac != 2)
@@ -25,7 +38,7 @@ int	main(int ac, char **av)
 	storeData(bitMap);
 	storeInput(av, inData);
 	validateData(bitMap);
-	validateInput(inData, dataSize);
+	validateInput(inData, dataSize, bitMap);
 	// printData(av, inData);
 	// printMap(bitMap);
 }

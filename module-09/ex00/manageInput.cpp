@@ -6,7 +6,7 @@
 /*   By: prachman <prachman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 09:26:30 by prachman          #+#    #+#             */
-/*   Updated: 2023/11/27 09:26:47 by prachman         ###   ########.fr       */
+/*   Updated: 2023/11/27 16:12:56 by prachman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	storeInput(char **av, inputData *inData)
 	return (1);
 }
 
-void	validateInput(inputData *inData, int dataSize)
+void	validateInput(inputData *inData, int dataSize, dataMap bitMap)
 {
 	for (int i = 1; i < dataSize; i++)
 	{
@@ -64,6 +64,8 @@ void	validateInput(inputData *inData, int dataSize)
 		}
 		if (inData[i].inputValue > 1000) {std::cout << "Error: number is too large." << std::endl; continue;}
 		else if (inData[i].inputValue < 0) {std::cout << "Error: number is too small." << std::endl; continue;}
+        inData[i].inputDate.erase(inData[i].inputDate.end()-1);
+        processValue(inData[i], bitMap);
 		// std::cout << inData[i].inputDate << std::endl;
 		// std::cout << inData[i].inputValue << std::endl;
 	}

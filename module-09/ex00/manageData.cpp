@@ -6,7 +6,7 @@
 /*   By: prachman <prachman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 09:23:53 by prachman          #+#    #+#             */
-/*   Updated: 2023/11/27 09:24:19 by prachman         ###   ########.fr       */
+/*   Updated: 2023/11/27 15:01:00 by prachman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,6 @@ void	validateData(dataMap &bitMap)
 		if (dateDigit != 8 || dateHyphen != 2)
 			it = bitMap.erase(it); //update it with the next element
 		else
-			it++; //update it this way so that it won't skip any key
+			it++; //update it this way so that it won't skip any key after erasing
 	}
 }
