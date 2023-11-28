@@ -6,7 +6,7 @@
 /*   By: prachman <prachman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 09:26:30 by prachman          #+#    #+#             */
-/*   Updated: 2023/11/27 16:12:56 by prachman         ###   ########.fr       */
+/*   Updated: 2023/11/28 10:18:54 by prachman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,20 @@ void	validateInput(inputData *inData, int dataSize, dataMap bitMap)
 			continue ;
 		}
 		if (inData[i].inputValue > 1000) {std::cout << "Error: number is too large." << std::endl; continue;}
-		else if (inData[i].inputValue < 0) {std::cout << "Error: number is too small." << std::endl; continue;}
-        inData[i].inputDate.erase(inData[i].inputDate.end()-1);
+		else if (inData[i].inputValue < 0) {std::cout << "Error: not a positive number." << std::endl; continue;}
+        inData[i].inputDate.erase(inData[i].inputDate.end()-1); //erase space in the 'inputDate' string
+        std::string   firstKey = bitMap.begin()->first;
+        std::string   lastKey = bitMap.rbegin()->first;
+        if (inData[i].inputDate < firstKey)
+        {
+            std::cout << "Error: the input's date preceed the existing date" << std::endl;
+            continue;
+        }
+        else if (inData[i].inputDate > lastKey)
+        {
+            std::cout << "Error: the input's date exceed the existing date" << std::endl;
+            continue;
+        }
         processValue(inData[i], bitMap);
-		// std::cout << inData[i].inputDate << std::endl;
-		// std::cout << inData[i].inputValue << std::endl;
 	}
 }
