@@ -6,7 +6,7 @@
 /*   By: prachman <prachman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:13:49 by prachman          #+#    #+#             */
-/*   Updated: 2023/11/29 16:13:34 by prachman         ###   ########.fr       */
+/*   Updated: 2023/11/30 10:16:52 by prachman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 int	doOperation(int a, int b, char op)
 {
+	if (a == 0 && op == '/')
+	{
+		std::cout << "Error: dividing by 0 is undefined" << std::endl;
+		exit(0);
+	}
 	switch (op)
 	{
 		case '+':
@@ -50,7 +55,8 @@ int	makeStack(char c, std::stack<int> &stack, int num )
 		return 2;
 	}
 	else
-		return (std::cout << "Error: invalid character " << c << std::endl, 0);
+		return (std::cout << "Error: wrong expression" << std::endl, 0);
+		// return (std::cout << "Error: invalid character " << c << std::endl, 0);
 	return (1);
 }
 
@@ -80,7 +86,7 @@ int main(int ac, char **av)
 				converter << str;
 				converter >> num;
 				if (num > 10)
-					return (std::cout << "Error: invalid number: " << num << std::endl, 0);
+					return (std::cout << "Error: number must be less than [ 10 ]: " << num << std::endl, 0);
 			}
 			i += len;
 		}
