@@ -6,7 +6,7 @@
 /*   By: prachman <prachman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 12:40:31 by prachman          #+#    #+#             */
-/*   Updated: 2023/12/03 12:04:26 by prachman         ###   ########.fr       */
+/*   Updated: 2023/12/05 14:01:53 by prachman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,9 @@ struct	t_pair
 {
 	int	top, bot;
 };
+
+void	printErrorArg(char *val);
+void	printPair(std::vector<t_pair> vecPair);
+bool	strIsDigit(char *s);
 
 #endif
