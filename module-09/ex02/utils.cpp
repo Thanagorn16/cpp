@@ -6,7 +6,7 @@
 /*   By: prachman <prachman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 15:49:18 by prachman          #+#    #+#             */
-/*   Updated: 2023/12/05 14:01:47 by prachman         ###   ########.fr       */
+/*   Updated: 2023/12/06 12:53:00 by prachman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,15 @@ void	printPair(std::vector<t_pair> vecPair)
 		std::cout << "| ";
 	}
 	std::cout << std::endl;
+}
+
+void	printSPend(std::vector<int> s, std::vector<int> pend)
+{
+	for(std::vector<int>::iterator it = s.begin(); it != s.end(); ++it)
+		std::cout << "s: " << *it << std::endl;
+	std::cout << std::endl;
+	for(std::vector<int>::iterator it = pend.begin(); it != pend.end(); ++it)
+		std::cout << "pend: " << *it << std::endl;
 }
 
 bool	strIsDigit(char *s)
