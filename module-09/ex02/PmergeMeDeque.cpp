@@ -1,104 +1,104 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PmergeMe.cpp                                       :+:      :+:    :+:   */
+/*   PmergeMeDeque.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prachman <prachman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 14:22:14 by prachman          #+#    #+#             */
-/*   Updated: 2023/12/09 19:26:06 by prachman         ###   ########.fr       */
+/*   Updated: 2023/12/09 19:25:05 by prachman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-void	merge(std::vector<t_pair> &vecPair, int start, int halfPoint, int end)
+void	merge(std::deque<t_pair> &deqPair, int start, int halfPoint, int end)
 {
-	// create 2 arrays with first half and second half of items in vecPair
+	// create 2 arrays with first half and second half of items in deqPair
 	int	firstHalf = halfPoint - start + 1;
 	int	secondHalf = end - halfPoint;
 	t_pair A[firstHalf], B[secondHalf];
 	
 	for (int i = 0; i < firstHalf; i++)
-		A[i] = vecPair[start + i];
+		A[i] = deqPair[start + i];
 	for (int i = 0; i < secondHalf; i++)
-		B[i] = vecPair[halfPoint + 1 + i];
+		B[i] = deqPair[halfPoint + 1 + i];
 
 	int i, j, k;
 	i = 0;
 	j = 0;
 	k = start;
 	
-	// sort the numbers among A & B, then put place them to vecPair
+	// sort the numbers among A & B, then put place them to deqPair
 	while (i < firstHalf && j < secondHalf)
 	{
 		if (A[i].bot <= B[j].bot)
-			vecPair[k++] = A[i++];
+			deqPair[k++] = A[i++];
 		else
-			vecPair[k++] = B[j++];
+			deqPair[k++] = B[j++];
 	}
 
-	// if run out of the items in the vector
+	// if run out of the items in the deque
 	//copy the remaining items from A & B to it
 	while (i < firstHalf)
-		vecPair[k++] = A[i++];
+		deqPair[k++] = A[i++];
 	while (j < secondHalf)
-		vecPair[k++] = B[j++];
+		deqPair[k++] = B[j++];
 }
 
-void	mergeSort(std::vector<t_pair> &vecPair, int start, int end)
+void	mergeSort(std::deque<t_pair> &deqPair, int start, int end)
 {
 	if (start >= end)
 		return ;
 	int halfPoint = start + (end - start) / 2;
-	mergeSort(vecPair, start, halfPoint);
-	mergeSort(vecPair, halfPoint + 1, end);
-	merge(vecPair, start, halfPoint, end);
+	mergeSort(deqPair, start, halfPoint);
+	mergeSort(deqPair, halfPoint + 1, end);
+	merge(deqPair, start, halfPoint, end);
 }
 
-std::vector<t_pair>	createPair(std::vector<int> myVec)
+std::deque<t_pair>	createPair(std::deque<int> myDeq)
 {
 	// sort elements and add to struct t_pair
-	int	pairSize = myVec.size() / 2;
-	std::vector<t_pair>	vecPair(pairSize);
+	int	pairSize = myDeq.size() / 2;
+	std::deque<t_pair>	deqPair(pairSize);
 	for (int i = 0, j = 0; j < pairSize; i += 2, j++)
 	{
-		if (myVec[i] < myVec[i + 1])
+		if (myDeq[i] < myDeq[i + 1])
 		{
-			vecPair[j].top =  myVec[i];
-			vecPair[j].bot =  myVec[i + 1];
+			deqPair[j].top =  myDeq[i];
+			deqPair[j].bot =  myDeq[i + 1];
 		}
 		else
 		{
-			vecPair[j].top =  myVec[i + 1];
-			vecPair[j].bot =  myVec[i];
+			deqPair[j].top =  myDeq[i + 1];
+			deqPair[j].bot =  myDeq[i];
 		}
 	}
-	return (vecPair);
+	return (deqPair);
 }
 
-std::vector<int>	operateVector(int *arr, int size)
+std::deque<int>	operateDeque(int *arr, int size)
 {
-	std::vector<int> myVec(arr, arr + size);
+	std::deque<int> myDeq(arr, arr + size);
 	int lst;
-	int popLst = myVec.size() % 2 != 0;
+	int popLst = myDeq.size() % 2 != 0;
 	if (popLst)
 	{
-		lst = myVec.back();
-		myVec.pop_back();
+		lst = myDeq.back();
+		myDeq.pop_back();
 	}
 
 	// sort elements and add to struct t_pair
-	std::vector<t_pair> vecPair = createPair(myVec);
+	std::deque<t_pair> deqPair = createPair(myDeq);
 
-	// use merge-sort algorithm to sort the sequences in the vector
-	mergeSort(vecPair, 0, vecPair.size() - 1);
+	// use merge-sort algorithm to sort the sequences in the deque
+	mergeSort(deqPair, 0, deqPair.size() - 1);
 	
 	// create s and pend to store result from merge-sort algorithm
-	std::vector<int> s(vecPair.size());
-	std::vector<int> pend(vecPair.size());
-	for (size_t i = 0; i < vecPair.size(); i++) s[i] = vecPair[i].bot;
-	for (size_t i = 0; i < vecPair.size(); i++) pend[i] = vecPair[i].top;
+	std::deque<int> s(deqPair.size());
+	std::deque<int> pend(deqPair.size());
+	for (size_t i = 0; i < deqPair.size(); i++) s[i] = deqPair[i].bot;
+	for (size_t i = 0; i < deqPair.size(); i++) pend[i] = deqPair[i].top;
 	if (popLst)
 		pend.push_back(lst);
 	
@@ -121,13 +121,13 @@ std::vector<int>	operateVector(int *arr, int size)
 		insertArea = jPos + jacobsthal[i - 1];
 		while (jPos >= jacobsthal[i - 1])
 		{
-			std::vector<int>::iterator lowPos = std::lower_bound(s.begin(), s.begin() + insertArea, pend[jPos]);
+			std::deque<int>::iterator lowPos = std::lower_bound(s.begin(), s.begin() + insertArea, pend[jPos]);
 			s.insert(lowPos, pend[jPos]);
 			jPos--;
 		}
 	}
 	return s;
-	// for (std::vector<int>::iterator it = s.begin(); it != s.end(); ++it)
+	// for (std::deque<int>::iterator it = s.begin(); it != s.end(); ++it)
 	// 	std::cout << *it << " ";
 	// checkAscending(s);
 }
