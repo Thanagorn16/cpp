@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prachman <prachman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 16:21:39 by truangsi          #+#    #+#             */
-/*   Updated: 2023/11/27 15:36:40 by prachman         ###   ########.fr       */
+/*   Updated: 2023/12/11 11:25:50 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define BTC_EX_HPP
 
 #include <iostream>
+#include <string.h>
 #include <fstream>
 #include <sstream>
 #include <iterator>
