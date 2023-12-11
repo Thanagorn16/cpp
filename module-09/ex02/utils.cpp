@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prachman <prachman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 15:49:18 by prachman          #+#    #+#             */
-/*   Updated: 2023/12/08 14:23:02 by prachman         ###   ########.fr       */
+/*   Updated: 2023/12/11 14:26:15 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,15 @@ bool	strIsDigit(char *s)
 
 	while (it != str.end() && isdigit(*it)) ++it;
 	return !str.empty() && it == str.end();
+}
+
+double	getExecTime(struct timeval & start)
+{
+	struct timeval	end;
+	double			timeTaken;
+
+	gettimeofday(&end, NULL);
+	timeTaken = end.tv_sec - start.tv_sec;
+	timeTaken += (end.tv_usec - start.tv_usec) * 1e-6;
+	return timeTaken;
 }

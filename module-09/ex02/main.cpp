@@ -3,34 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prachman <prachman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 12:41:30 by prachman          #+#    #+#             */
-/*   Updated: 2023/12/09 20:16:09 by prachman         ###   ########.fr       */
+/*   Updated: 2023/12/11 14:28:58 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
-
-template <typename T>
-void	printNum(const T& arr, std::string str)
-{
-	std::cout << str;
-	for (int i = 0; arr[i]; i++)
-		std::cout << arr[i] << " ";
-	std::cout << std::endl;
-}
-
-double	getExecTime(struct timeval & start)
-{
-	struct timeval	end;
-	double			timeTaken;
-
-	gettimeofday(&end, NULL);
-	timeTaken = end.tv_sec - start.tv_sec;
-	timeTaken += (end.tv_usec - start.tv_usec) * 1e-6;
-	return timeTaken;
-}
 
 int	main(int ac, char **av)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMeDeque.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prachman <prachman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 14:22:14 by prachman          #+#    #+#             */
-/*   Updated: 2023/12/09 19:25:05 by prachman         ###   ########.fr       */
+/*   Updated: 2023/12/11 14:39:16 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	merge(std::deque<t_pair> &deqPair, int start, int halfPoint, int end)
 	int	firstHalf = halfPoint - start + 1;
 	int	secondHalf = end - halfPoint;
 	t_pair A[firstHalf], B[secondHalf];
-	
+
 	for (int i = 0; i < firstHalf; i++)
 		A[i] = deqPair[start + i];
 	for (int i = 0; i < secondHalf; i++)
@@ -28,7 +28,7 @@ void	merge(std::deque<t_pair> &deqPair, int start, int halfPoint, int end)
 	i = 0;
 	j = 0;
 	k = start;
-	
+
 	// sort the numbers among A & B, then put place them to deqPair
 	while (i < firstHalf && j < secondHalf)
 	{
@@ -93,7 +93,7 @@ std::deque<int>	operateDeque(int *arr, int size)
 
 	// use merge-sort algorithm to sort the sequences in the deque
 	mergeSort(deqPair, 0, deqPair.size() - 1);
-	
+
 	// create s and pend to store result from merge-sort algorithm
 	std::deque<int> s(deqPair.size());
 	std::deque<int> pend(deqPair.size());
@@ -101,16 +101,16 @@ std::deque<int>	operateDeque(int *arr, int size)
 	for (size_t i = 0; i < deqPair.size(); i++) pend[i] = deqPair[i].top;
 	if (popLst)
 		pend.push_back(lst);
-	
+
 	// push first from pend to first of s
 	size_t	totalSize = s.size() + pend.size();
 	s.insert(s.begin(), pend[0]);
 
 	// get jacobsthal position
 	int	pendSize = pend.size() - 1; //count with index
-	int jacobsthal[] = {1, 3, 5, 11, 21, 43, 85, 171, 341, 683, 1365, 2731, 
-						5461, 10923, 21845, 43691, 87381, 174763, 349525, 
-						699051, 1398101, 2796203, 5592405, 11184811, 22369621, 
+	int jacobsthal[] = {1, 3, 5, 11, 21, 43, 85, 171, 341, 683, 1365, 2731,
+						5461, 10923, 21845, 43691, 87381, 174763, 349525,
+						699051, 1398101, 2796203, 5592405, 11184811, 22369621,
 						44739243, 89478485, 178956971, 357913941, 715827883, 1431655765};
 	int	insertArea = 0;
 	for (int i = 1; s.size() < totalSize; i++)
@@ -127,7 +127,5 @@ std::deque<int>	operateDeque(int *arr, int size)
 		}
 	}
 	return s;
-	// for (std::deque<int>::iterator it = s.begin(); it != s.end(); ++it)
-	// 	std::cout << *it << " ";
 	// checkAscending(s);
 }

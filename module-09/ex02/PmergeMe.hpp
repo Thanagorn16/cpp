@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prachman <prachman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: truangsi <truangsi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 12:40:31 by prachman          #+#    #+#             */
-/*   Updated: 2023/12/09 19:29:56 by prachman         ###   ########.fr       */
+/*   Updated: 2023/12/11 14:26:38 by truangsi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,22 +34,29 @@ void	mergeSort(std::vector<t_pair> &vecPair, int start, int end);
 void	merge(std::vector<t_pair> &vecPair, int start, int halfPoint, int end);
 void	mergeSort(std::deque<t_pair> &vecPair, int start, int end);
 void	merge(std::deque<t_pair> &vecPair, int start, int halfPoint, int end);
+double	getExecTime(struct timeval & start);
 std::vector<t_pair>	createPair(std::vector<int> myVec);
 std::deque<t_pair>	createPair(std::deque<int> myVec);
 
 template <typename T>
-void	checkAscending(T const & nums)
+void	printNum(const T& arr, std::string str)
 {
-	for (typename T::const_iterator it = nums.begin(); it + 1 != nums.end(); it++)
-	{
-		if (*it > *(it + 1)) {
-			std::cout << "error" << std::endl;
-			return ;
-			// return prtErrMsg(str + "No, number is not asceding order !!!");
-		}
-	}
-	std::cout << "okay" << std::endl;
-	// std::cerr << GREEN << str + "OK,number is ascending Order." << RESET << std::endl;
+	std::cout << str;
+	for (int i = 0; arr[i]; i++)
+		std::cout << arr[i] << " ";
+	std::cout << std::endl;
 }
+// template <typename T>
+// void	checkAscending(T const & nums)
+// {
+// 	for (typename T::const_iterator it = nums.begin(); it + 1 != nums.end(); it++)
+// 	{
+// 		if (*it > *(it + 1)) {
+// 			std::cout << "error" << std::endl;
+// 			return ;
+// 		}
+// 	}
+// 	std::cout << "okay" << std::endl;
+// }
 
 #endif
